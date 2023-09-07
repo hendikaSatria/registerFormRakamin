@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HomeWork 5</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <style>
+      .hide-button {
+          display: none;
+      }
+  </style>
+  </head>
+  <body class="bg-dark">
+    <div class="container my-5">
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-link active" id="nav-register-tab" href="/home" data-bs-toggle="tab" data-bs-toggle="tab" data-bs-target="#nav-register" type="button"
+          role="tab" aria-controls="nav-home" aria-selected="true" aria-current="page">Register</a>
+          <a class="nav-link" id="nav-table-tab" href="/profile" data-bs-toggle="tab" data-bs-toggle="tab" data-bs-target="#nav-table" type="button"
+          role="tab" aria-controls="nav-home" aria-selected="true">List</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active p-3" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
+          <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label text-light">Nama</label>
+            <input type="text" class="form-control" id="userName" placeholder="Nama">
+          </div>
+          <div class="mb-3">
+            <label for="formGroupExampleInput2" class="form-label text-light">Umur</label>
+            <input type="number" class="form-control" id="age" placeholder="Umur">
+          </div>
+          <div class="mb-3">
+            <label for="formGroupExampleInput3" class="form-label text-light">Uang sangu</label>
+            <input type="number" class="form-control" id="allowance" placeholder="idr">
+          </div>
+          <a class="btn btn-primary" href="#" role="button" id="registerBtn">Register</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="tab-pane fade active p-3" id="nav-table" role="tabpanel" aria-labelledby="nav-table-tab">
+        <table class="table table-success table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col"><b>Rata-rata Umur Peserta</b></th>
+              <th scope="col" id="averageAge"><b>0</b></th>
+              <th scope="col"><b>Rata-rata Uang Sangu Peserta</b></th>
+              <th scope="col" id="averageAllowance"><b>0</b></th>
+            </tr>
+            <tr>
+              <th scope="col">-</th>
+              <th scope="col">Nama</th>
+              <th scope="col">Umur</th>
+              <th scope="col">Uang Sangu</th>
+              <th scope="col"> </th>
+            </tr>
+          </thead>
+          <tbody id="nav-table-body">
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="person.js"></script>  
+    <script src="index.js"></script>
+  </body>
+</html>
