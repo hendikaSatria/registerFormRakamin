@@ -52,7 +52,7 @@ The `index.js` file handles the functionality of the web application.
 
 ### `pushToData(person)`
 
-- A helper function to add a validated person's data to the `data` array.
+- A function to add a validated person's data to the `data` array.
 
 ### Asynchronous Validation Function
 
