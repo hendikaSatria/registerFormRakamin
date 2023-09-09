@@ -1,3 +1,4 @@
+//event listener untuk memastikan code HTML run terlebih dahulu dari js
 document.addEventListener("DOMContentLoaded", function () {
     const data = [];
     const userName = document.getElementById("userName");
@@ -8,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const averageAgeCell = document.getElementById("averageAge");
     const averageAllowanceCell = document.getElementById("averageAllowance");
 
+    // untuk mengepush user data ke data array
     const pushToData = (person) => {
        data.push({
             userName: person.userName,
@@ -16,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
        })
     }
 
+    //Async function untuk validasi user dengan set timeout selama 2 detik
     async function validation(person) {
         return new Promise((resolve, reject) => {
             setTimeout(async () => {
@@ -30,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    //Menghitung rata-rata umur
     const averageAge = (arr) => {
         let total = 0;
         arr.forEach((person) => {
@@ -40,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return Math.floor(total/arr.length);
     }
 
+    //Menghitunf rata-rata uang sangu
     const averageAllowance = (arr) => {
         let total = 0;
         arr.forEach((person) => {
@@ -50,14 +55,19 @@ document.addEventListener("DOMContentLoaded", function () {
         return Math.floor(total/arr.length);
     }
 
+    //event listener untuk button
     registerBtn.addEventListener("click", async function () {
+        //Disable button saat user register unutk mencegah multiple click dan data input dari user 
         registerBtn.disabled = true;
         registerBtn.classList.add("hide-button");        
+
+        //membuat person object
         const person = new Person(userName.value, age.value, allowance.value);
 
+        //validasi user
         await validation(person).then(() => {
+            //Membuat  tablle row dan col untuk user data yg di submit
             const newRow = document.createElement("tr");
-    
             const indexCell = document.createElement("th");
             indexCell.setAttribute("scope", "row");
             indexCell.textContent = data.length ;
@@ -72,18 +82,21 @@ document.addEventListener("DOMContentLoaded", function () {
             allowanceCell.textContent = person.allowance;
             
             const blankCell = document.createElement("td");
+
+            //memasukan cells ke row baru yg telah di buat dan di append ke tbody
             newRow.appendChild(indexCell);
             newRow.appendChild(nameCell);
             newRow.appendChild(ageCell);
             newRow.appendChild(allowanceCell);
             newRow.appendChild(blankCell);
-    
             tableBody.appendChild(newRow);
-            
+
+            //mengkosongkan form setelah data success di masukan ke array
             userName.value = "";
             age.value = "";
             allowance.value = "";
-            
+
+            // mengubah cell teraats untuk rata-rata umur dan uang sangu
             averageAgeCell.textContent = averageAge(data);
             averageAllowanceCell.textContent = averageAllowance(data);
 
@@ -92,6 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }).catch((error) => {
             alert(error);
         }).finally(() => {
+            //memunculkan button kembali
             registerBtn.disabled = false;
             registerBtn.classList.remove("hide-button");
         })
