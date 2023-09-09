@@ -5,20 +5,24 @@ class Person {
         this.allowance = allowance;
     }
 
+    //Validasi nama (nyoba pake regex kak hehehe)
     _validateUserName() {
         const minimumChar = /^.{10,}$/; // minimal 10 characters
         const containsOnlyLetters = /^[^\d]+$/.test(this.userName); // tidak boleh ada nomor
         return minimumChar.test(this.userName) && containsOnlyLetters;
     }
 
+    // validasi umur
     _validateAge() {
         return this.age >= 25;
     }
 
+    // validasi uang sangu
     _validateAllowance() {
         return this.allowance >= 100000 && this.allowance <= 1000000;
     }
 
+    //async function untuk validasi untuk mengecek semua kriteria user dan men throw error jika salah satu kriteria gagal
     async validate() {
         if (this._validateUserName() && this._validateAge() && this._validateAllowance()) {
             return true;
